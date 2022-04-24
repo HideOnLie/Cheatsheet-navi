@@ -1,0 +1,42 @@
+% zinit
+
+# show zinit status - 概述
+zinit zstatus
+
+# [plugin] report - 查看 loaded plugin 状态
+zinit report <plg-spec>
+
+# [plugin] cd - 进入plugin目录
+zinit cd <plg-spec>
+
+# [plugin] status - 查看plugin的git status, 默认查看全部plugin
+zinit status <plg-spec>
+
+# [snippets] list - 列出加载的snippets
+zinit ls
+
+;
+; completion part
+;
+
+# [completion] list - 列出使用的completion
+zinit clist
+
+# [completion] diable - 禁用completion
+zinit cdisable <cname>
+
+# [completion] enable - 启用completion
+zinit cenable <cname>
+
+# [completion] reinstall - 重新装载指定plugin的completion, 可接受绝对路径, -q 静默运行
+zinit creinstall <plg-spec>
+
+# [completion] uninstall - 卸载指定plugin的completion
+zinit cuninstall <plg-spec>
+
+# [completion] search - 搜索所有插件中可以使用的completion
+zinit csearch
+
+# [completion] refresh - 刷新已装载的completion
+zinit compinit
+

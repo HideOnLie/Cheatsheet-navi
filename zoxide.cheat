@@ -1,0 +1,8 @@
+% zoxide
+
+# interactive selection - 交互式选择
+
+zoxide query -i <KEYWORDS>
+
+# list all matching directories and score
+zoxide query -ls
