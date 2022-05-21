@@ -1,13 +1,37 @@
 % zinit
 
-# show zinit status - 概述
+$ zinit_cache_folder: echo "$HOME/.local/share/zinit"
+
+# [core] show Zinit status - 概述
 zinit zstatus
+
+# [core] statistics plugin load times - 统计plugin加载时间，以加载顺序排序
+zinit times
+
+# [core] updates and compiles Zinit - 更新zinit
+zinit self-update
+
+# [core] update plugin or snippets - 更新plugin或snippets
+zinit update <plg-spec>
+
+$ plg-spec : /bin/ls -1 -D -I "*zinit" "<zinit_cache_folder>/plugins";  \
+                find "<zinit_cache_folder>/snippets" -mindepth 2 -maxdepth 2 -type d | awk -F "/" '{print $(NF-1)"/"$NF}'
+
+;
+; plugin and snippets part
+;
+
+# [plugin] [snippets] delete - 删除plugin或snippets
+zinit delete <plg_or_URL>
 
 # [plugin] report - 查看 loaded plugin 状态
 zinit report <plg-spec>
 
 # [plugin] cd - 进入plugin目录
 zinit cd <plg-spec>
+
+$ plg-spec : /bin/ls -1 -D -I "*zinit" "<zinit_cache_folder>/plugins";  \
+                find "<zinit_cache_folder>/snippets" -mindepth 2 -maxdepth 2 -type d | awk -F "/" '{print $(NF-1)"/"$NF}'
 
 # [plugin] status - 查看plugin的git status, 默认查看全部plugin
 zinit status <plg-spec>
