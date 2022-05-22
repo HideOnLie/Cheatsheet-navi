@@ -1,0 +1,172 @@
+% pacman
+
+;
+; common
+; 常用操作
+;
+
+# [common] install package from remote database - 安装package
+pacman -Syu
+
+# [common] remove package - 删除package, 包括其配置文件, 以及没有被其他包依赖的依赖package
+pacman -Rns
+
+# [common] upgrade system package - 更新系统package
+pacman -Syu
+
+# [common] list package not required by any package which installed as dependency package - 列出不再被依赖的package
+pacman -Qdt
+
+;
+; pacman -S
+; 同步操作
+;
+
+# [sync] package or group - 从远程repo安装一个package 或 group
+pacman -S <package>
+
+# [sync] upgrade installed package - 升级package, -uu开启降级功能
+pacman -Su <package>
+
+# [sync] download fresh package database from server - 从服务器下载新的数据库, -yy即使已经是最新也重新下载
+pacman -Sy
+
+# [sync] download packages but do not install/upgrade anything - 下载后不要安装package
+pacman -Sw <package>
+
+# [sync] skip dependency version checks - 跳过版本依赖检查, -dd 跳过所有检查
+pacman -Sd <package>
+
+# [sync] [search] search remote repo for matching strings - 根据名字和描述搜索package
+pacman -Ss <regex>
+
+# [sync] [search] search remote repo for matching strings in quiet - 根据名字和描述搜索package, 只显示package名字
+pacman -Ssq <regex>
+
+# [sync] [list] group - 查看远程repo的package group 和 member, 默认查看所有group, -gg 查看所有group和member
+pacman -Sg <group>
+
+# [sync] [list] remote package info - 查看远端package的相关信息, -ii 查看扩展信息
+pacman -Si <package>
+
+# [sync] [list] package in repo - 查看指定repo的所有package, 默认为全部应用的repo
+pacman -Sl <repo>
+
+# [sync] [list] package in repo in quiet - 查看指定repo的所有package, 只显示package名字, 默认为全部应用的repo
+pacman -Slq <repo>
+
+# [sync] [list] package download url - 查看package的下载URL, 如果已经下载则显示在文件系统中的位置
+pacman -Sp <package>
+
+# [sync] [clean] cached package that not installed - 删除没有安装的package缓存, -cc 删除所有缓存
+pacman -Sc
+
+;
+; pacman -R
+; 删除操作
+;
+
+# [remove] remove configuration files - 删除配置文件
+pacman -Rn
+
+# [remove] remove unnecessary dependencies - 删除不必要的依赖, -ss 包括显式安装的依赖
+pacman -Rs
+
+# [remove] remove unneeded packages - 删除不需要的package
+pacman -Ru
+
+# [remove] remove packages and all packages that depend on them - 删除package以及所有依赖它的package
+pacman -Rc
+
+;
+; pacman -D
+; 数据库操作
+;
+
+# [database] alternate database location - 设置database的路径
+pacman -Db <path>
+
+# [database] check local database for validity - 校验本地database, -kk 校验sync database
+pacman -Dk
+
+# [database] set an alternate installation root - 设置安装根路径
+pacman -Dr <path>
+
+;
+; pacman -F
+; 在远端packakge包中查找文件
+;
+
+# [file] alternate database location - 设置database的路径
+pacman -Fb <path>
+
+# [file] set an alternate installation root - 设置安装根路径
+pacman -Fr <path>
+
+# [file] [list] list the files owned by the queried package - 列出远端package的files
+pacman -Fl <package>
+
+# [file] regular expressions searching - 正则查询
+pacman -Fx <regex>
+
+# [file] download fresh package databases from the server - 下载最新的database, -yy 重新下载最新database
+pacman -Fy
+
+;
+; pacman -Q
+; 本地package查询操作
+;
+# [query] alternate database location - 设置database的路径
+pacman -Qb <path>
+
+# [query] set an alternate installation root - 设置安装根路径
+pacman -Qr <path>
+
+# [query] [list] [common] the files owned by the queried package - 列出本地package的files
+pacman -Ql <package>
+
+# [list] local package info - 查看本地package的相关信息, -ii 查看扩展信息
+pacman -Qi <package>
+
+# [query] check that package files exist - 检查package的file是否缺失, -kk 检查文件属性
+pacman -Qk
+
+# [query] [search] search locally-installed packages for matching strings - 正则搜索package
+pacman -Qs <regex>
+
+# [query] [list] packages installed as dependencies - 列出以依赖安装的package
+pacman -Qd
+
+# [query] [list] [common] list packages explicitly installed - 列出显式安装的package
+pacman -Qe
+
+# [query] [list] all group member - 列出所有已安装group的member package
+pacman -Qg
+
+# [query] [list] [common] installed packages not found in sync db(s) - 列出自己手动安装的package, 包括yay
+pacman -Qm
+
+# [query] [list] [common] installed packages only found in sync db(s) - 列出从远端下载的package
+pacman -Qn
+
+# [query] [list] packages not (optionally) required by any package - 列出不被任何package需要的package, -tt 忽略可选依赖
+pacman -Qt
+
+# [query] [list] outdated packages - 列出过时的package
+pacman -Qu
+
+# [query] [common] query the package that owns <file> - 查询哪个package拥有这个文件
+pacman -Qo <file>
+
+# [query] query a package file instead of the database - 查询文件系统中package文件的信息, 通常与-i使用
+pacman -Qp <file>
+
+;
+; pacman -U
+;
+
+# [upgrade] [common] install package - 安装指定package, 如果为本地路径则本地安装, 如果为远端URL则下载安装
+pacman -U <file>
+
+# [upgrade] download packages but do not install/upgrade anything - 下载后不要安装package
+pacman -Uw
