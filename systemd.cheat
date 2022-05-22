@@ -1,0 +1,51 @@
+% systemd
+
+;
+; Power management
+;
+
+# [power] reboot - 重启
+systemctl reboot
+
+# [power] power off - 关机
+systemctl poweroff
+
+# [power] suspend - 挂起
+systemctl poweroff
+
+# [power] hibernation - 休眠
+systemctl hibernate
+
+# [power] hybrid-sleep - 休眠并挂起
+systemctl hybrid-sleep
+
+;
+; Units
+;
+
+# [units] runtime status - 查看unit运行时状态, 若不指定unit, 默认为查看系统状态
+systemctl status <units_or_pid>
+
+# [units] [list] units in memory - 列出当前运行的units, systemctl不带参数时的默认行为
+systemctl list-units
+
+# [units] [list] list failed units - 列出运行失败的units
+systemctl --failed
+
+# [units] show manual page - 列出units的帮助文档
+systemctl help <units>
+
+# [units] whether is enable - 查看units是否enable
+systemctl is-enabled <units>
+
+# [units] start - 启动指定units
+systemctl start <units>
+
+# [units] stop - 停止指定units
+systemctl stop <units>
+
+# [units] restart - 重启指定units
+systemctl restart <units>
+
+# [units] reload - 重载unit和其配置文件
+systemctl reload <units>
