@@ -103,7 +103,7 @@ pacman -Fb <path>
 # [file] set an alternate installation root - 设置安装根路径
 pacman -Fr <path>
 
-# [file] [list] list the files owned by the queried package - 列出远端package的files
+# [file] [search] list the files owned by the queried package - 列出远端package的files
 pacman -Fl <package>
 
 # [file] regular expressions searching - 正则查询
@@ -170,3 +170,14 @@ pacman -U <file>
 
 # [upgrade] download packages but do not install/upgrade anything - 下载后不要安装package
 pacman -Uw
+
+;
+; pkgfile
+; 在同步的数据库中寻找文件
+;
+
+# [search] search file in which package - 查找远端哪个包拥有这个文件
+pkgfile <file>
+
+# [sync] sync the pkgfile database - 同步远端数据库
+sudo pkgfile -u
